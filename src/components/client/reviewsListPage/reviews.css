@@ -1,0 +1,17 @@
+.card {
+    flex-direction: row !important;
+}
+
+.card-footer {
+    padding: 0 !important;
+    background-color: inherit !important;
+}
+
+@media (max-width: 540px) {
+    .card {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
