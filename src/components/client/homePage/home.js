@@ -11,11 +11,12 @@ function Home({ reviewsData }) {
     const sortedByRating = [...reviewsData];
     sortedByRating.sort(dynamicSort("rating"));
 
+
     return (
         <div className="bg-light bg-gradient pt-4 pb-4">
             <LatestAdditions sortedByDate={sortedByDate} />
             <TopRating sortedByRating={sortedByRating} />
-            <TagCloudCreate />
+            <TagCloudCreate reviewsData={reviewsData} />
         </div>
     )
 }
