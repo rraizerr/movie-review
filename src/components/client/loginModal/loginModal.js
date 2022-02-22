@@ -5,14 +5,6 @@ function LoginModal(props) {
 
     //884562966666-909ha1fm9ik1mifp9ujt0npb6k3b1kp3.apps.googleusercontent.com
 
-    // function onSignIn(googleUser) {
-    //     var profile = googleUser.getBasicProfile();
-    //     console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-    //     console.log('Name: ' + profile.getName());
-    //     console.log('Image URL: ' + profile.getImageUrl());
-    //     console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-    // }
-
     const responseGoogle = (response) => {
         console.log(response);
     }
@@ -64,9 +56,7 @@ function LoginModal(props) {
                         <Col xs={6} md={4}>
                             .col-xs-6 .col-md-4
                         </Col>
-                        <Col xs={6} md={4}>
-                            .col-xs-6 .col-md-4
-                        </Col>
+
                     </Row>
                 </Container>
             </Modal.Body>

@@ -1,0 +1,22 @@
+.error-page-display {
+    background-image: url("https://www.wallpapersun.com/wp-content/uploads/2021/05/Marvel-Wallpaper-5-715x1338.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    width: inherit;
+    height: 84vh;
+    color:rgb(221, 219, 219);
+}
+
+.error-page-link {
+    padding: 0.5rem 1rem;
+    color: #0d6efd;
+    text-decoration: none;
+    transition: color .15s ease-in-out, 
+    background-color .15s ease-in-out, 
+    border-color .15s ease-in-out;
+}
+
+/* 
+groot img
+https: //i.pinimg.com/736x/7e/b4/e8/7eb4e87adaef0ebede0fac211fa145d8.jpg
+*/

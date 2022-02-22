@@ -6,7 +6,8 @@ import LoginModal from "../loginModal/loginModal";
 
 function Header() {
     const [modalShow, setModalShow] = useState(false);
-    const logged = false;
+    const logged = true;
+
     return (
 
         <>
@@ -24,7 +25,7 @@ function Header() {
                                     Sigh in
                                 </Button>)
                                 : (<Navbar.Text>
-                                    Signed in as: <a href="#login">Mark Otto</a>
+                                    Signed in as: <Link to="/users/:name">Mark Otto</Link>
                                 </Navbar.Text>)
                             }
 

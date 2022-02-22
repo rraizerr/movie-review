@@ -4,8 +4,10 @@ import { Routes, Route } from "react-router-dom";
 import Header from "../header/header";
 import Search from "../search/search";
 import Home from "../homePage/home";
+import UsersList from "../usersList/usersList";
 import ReviewsList from "../reviewsList/reviewsList";
 import Footer from "../footer/footer";
+import ErrorPage from "../errorPage/errorPage";
 
 import ReviewPage from "../reviews/reviewPage";
 
@@ -636,8 +638,10 @@ class App extends Component {
                 <Search />
                 <Routes>
                     <Route path="/" element={<Home reviewsData={reviewsData} />} />
+                    <Route path="users" element={<UsersList />} />
                     <Route path="reviews" element={<ReviewsList reviewsData={reviewsData} />} />
                     <Route path="reviews/:id" element={<ReviewPage reviewsData={reviewsData} />} />
+                    <Route path="*" element={<ErrorPage />} />
                 </Routes>
                 <Footer />
             </div>
