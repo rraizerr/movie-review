@@ -2,6 +2,7 @@ import { Component } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Header from "../header/header";
+import Search from "../search/search";
 import Home from "../homePage/home";
 import ReviewsList from "../reviewsList/reviewsList";
 import Footer from "../footer/footer";
@@ -630,8 +631,9 @@ class App extends Component {
     render() {
         const { reviewsData } = this.state;
         return (
-            <div className="App">
+            <div className="App bg-light bg-gradient">
                 <Header />
+                <Search />
                 <Routes>
                     <Route path="/" element={<Home reviewsData={reviewsData} />} />
                     <Route path="reviews" element={<ReviewsList reviewsData={reviewsData} />} />

@@ -12,7 +12,7 @@ function ReviewPage({ reviewsData }) {
                 ? (
                     <div key={item.id} className="mt-4 mb-4">
                         <div className="d-flex flex-column">
-                            <h1 className="fs-2 d-flex justify-content-center">{item.title}</h1>
+                            <h1 className="fs-2 d-flex">{item.title}</h1>
                             <div className="d-flex align-items-center">
                                 <CreateRating size={24} value={item.rating} />
                                 <small className="text-muted ms-1">{item.rating}</small>
