@@ -6,7 +6,7 @@ import LoginModal from "../loginModal/loginModal";
 
 function Header() {
     const [modalShow, setModalShow] = useState(false);
-    const logged = true;
+    const logged = false;
     return (
 
         <>
