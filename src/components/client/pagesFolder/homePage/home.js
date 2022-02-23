@@ -2,7 +2,7 @@ import LatestAdditions from "./latestAdditions/latestAdditions";
 import TopRating from "./topRating/topRating";
 import TagCloudCreate from "./tagCloudCreate/tagCloudCreate";
 
-import dynamicSort from "../localization/sortFunction";
+import dynamicSort from "../../localization/sortFunction";
 
 function Home({ reviewsData }) {
 

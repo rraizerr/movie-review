@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { Container, Card } from "react-bootstrap";
 
-import CreateRating from "../createRating/createRating";
+import CreateRating from "../../componentsFolder/createRating/createRating";
 
 function ReviewPage({ reviewsData }) {
     const { id } = useParams();

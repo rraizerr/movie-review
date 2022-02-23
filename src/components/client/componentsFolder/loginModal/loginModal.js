@@ -1,7 +1,7 @@
 import { Modal, Container, Row, Col, Button, Form, Stack } from "react-bootstrap";
 import { GoogleLogin } from 'react-google-login';
 
-function LoginModal({ show, onHide, responseGoogle }) {
+function LoginModal({ show, onHide, resGoogleSuccess, resGoogleFailure }) {
 
     // const { responseGoogle } = props;
 
@@ -63,8 +63,8 @@ function LoginModal({ show, onHide, responseGoogle }) {
                             <GoogleLogin
                                 clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                                 buttonText="Войти"
-                                onSuccess={responseGoogle}
-                                onFailure={responseGoogle}
+                                onSuccess={resGoogleSuccess}
+                                onFailure={resGoogleFailure}
                                 cookiePolicy={'single_host_origin'}
                             />
                         </Col>

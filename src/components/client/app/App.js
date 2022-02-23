@@ -1,21 +1,33 @@
 import { Component } from "react";
 import { Routes, Route } from "react-router-dom";
 
-import Header from "../header/header";
-import Search from "../search/search";
-import Home from "../homePage/home";
-import UsersList from "../usersList/usersList";
-import ReviewsList from "../reviewsList/reviewsList";
-import Footer from "../footer/footer";
-import ErrorPage from "../errorPage/errorPage";
+import Header from "../layoutsFolder/header/header";
+import Search from "../componentsFolder/search/search";
+import Home from "../pagesFolder/homePage/home";
+import UsersList from "../pagesFolder/usersList/usersList";
+import ReviewsList from "../pagesFolder/reviewsList/reviewsList";
+import Footer from "../layoutsFolder/footer/footer";
+import ErrorPage from "../pagesFolder/errorPage/errorPage";
 
-import ReviewPage from "../reviews/reviewPage";
+import ReviewPage from "../pagesFolder/reviewPages/reviewPage";
+import GetResponse from "../localization/getResponse";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 class App extends Component {
     state = {
+        currentUser: {},
+        availableUsers: [
+            {
+                userId: 1,
+                email: "setka.kh@gmail.com",
+                authorizedPaths: [
+                    "/userslist",
+                    "/admin"
+                ]
+            }
+        ],
         reviewsData: [
             {
                 img: "https://cdn.igromania.ru/mnt/articles/1/7/7/b/1/1/32170/preview/0141b3da8c7f2c50_848x477.jpg",
@@ -630,24 +642,41 @@ class App extends Component {
         ]
     };
 
-    responseGoogle = (response) => {
+    resGoogleFailure = (response) => {
         console.log(response);
-        console.log(response.profileObj.givenName);
-        console.log(response.profileObj.email);
-        console.log(response.profileObj.imageUrl);
+    }
 
-        // userData.givenName = response.profileObj.givenName;
-        // userData.email = response.profileObj.email;
-        // userData.imageUrl = response.profileObj.imageUrl;
-        // console.log(userData);
-        // return userData;
+    resGoogleSuccess = (response) => {
+
+        GetResponse(`https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${response.tokenId}`)
+            .then(() => {
+                console.log(`Доступ разрешен, ответ получен`);
+                const authUser = {};
+                authUser.givenName = response.profileObj.givenName;
+                authUser.email = response.profileObj.email;
+                authUser.imageUrl = response.profileObj.imageUrl;
+                return authUser;
+            })
+            .then((currentUser) => {
+                this.setState(({ reviewsData }) => {
+                    return {
+                        currentUser,
+                        reviewsData
+                    }
+                })
+            })
+            .catch(ex => console.error(ex));
+
     }
 
     render() {
-        const { reviewsData } = this.state;
+        const { currentUser, reviewsData } = this.state;
         return (
             <div className="App bg-light bg-gradient">
-                <Header responseGoogle={this.responseGoogle} />
+                <Header
+                    resGoogleSuccess={this.resGoogleSuccess}
+                    resGoogleFailure={this.resGoogleFailure}
+                    currentUser={currentUser} />
                 <Search />
                 <Routes>
                     <Route path="/" element={<Home reviewsData={reviewsData} />} />

@@ -2,24 +2,13 @@ import { useState } from "react";
 import { Container, Navbar, Nav, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-import LoginModal from "../loginModal/loginModal";
+import LoginModal from "../../componentsFolder/loginModal/loginModal";
 
-function Header({ responseGoogle }) {
+function Header({ resGoogleSuccess, resGoogleFailure, currentUser }) {
     const [modalShow, setModalShow] = useState(false);
-    const logged = false;
+    const logged = !(currentUser && Object.keys(currentUser).length === 0 && Object.getPrototypeOf(currentUser) === Object.prototype)
 
-    const userData = {
-        givenName: "",
-        email: "",
-        imageUrl: ""
-    };
-
-    // const responseGoogle = (response) => {
-    //     console.log(response);
-    //     console.log(response.profileObj.givenName);
-    //     console.log(response.profileObj.email);
-    //     console.log(response.profileObj.imageUrl);
-    // }
+    console.log(currentUser);
 
     return (
 
@@ -38,7 +27,7 @@ function Header({ responseGoogle }) {
                                     Войти
                                 </Button>)
                                 : (<Navbar.Text>
-                                    Вы вошли как: <Link to="/users/:name">Mark Otto</Link>
+                                    Вы вошли как: <Link to="/users/:name">{currentUser.givenName}</Link>
                                 </Navbar.Text>)
                             }
 
@@ -49,7 +38,8 @@ function Header({ responseGoogle }) {
             <LoginModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}
-                responseGoogle={responseGoogle} />
+                resGoogleSuccess={resGoogleSuccess}
+                resGoogleFailure={resGoogleFailure} />
         </>
     )
 }
