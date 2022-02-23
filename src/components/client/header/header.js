@@ -4,9 +4,22 @@ import { Link } from "react-router-dom";
 
 import LoginModal from "../loginModal/loginModal";
 
-function Header() {
+function Header({ responseGoogle }) {
     const [modalShow, setModalShow] = useState(false);
     const logged = false;
+
+    const userData = {
+        givenName: "",
+        email: "",
+        imageUrl: ""
+    };
+
+    // const responseGoogle = (response) => {
+    //     console.log(response);
+    //     console.log(response.profileObj.givenName);
+    //     console.log(response.profileObj.email);
+    //     console.log(response.profileObj.imageUrl);
+    // }
 
     return (
 
@@ -33,7 +46,10 @@ function Header() {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-            <LoginModal show={modalShow} onHide={() => setModalShow(false)} />
+            <LoginModal
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+                responseGoogle={responseGoogle} />
         </>
     )
 }

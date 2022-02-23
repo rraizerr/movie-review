@@ -630,11 +630,24 @@ class App extends Component {
         ]
     };
 
+    responseGoogle = (response) => {
+        console.log(response);
+        console.log(response.profileObj.givenName);
+        console.log(response.profileObj.email);
+        console.log(response.profileObj.imageUrl);
+
+        // userData.givenName = response.profileObj.givenName;
+        // userData.email = response.profileObj.email;
+        // userData.imageUrl = response.profileObj.imageUrl;
+        // console.log(userData);
+        // return userData;
+    }
+
     render() {
         const { reviewsData } = this.state;
         return (
             <div className="App bg-light bg-gradient">
-                <Header />
+                <Header responseGoogle={this.responseGoogle} />
                 <Search />
                 <Routes>
                     <Route path="/" element={<Home reviewsData={reviewsData} />} />

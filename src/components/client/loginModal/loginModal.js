@@ -1,15 +1,31 @@
 import { Modal, Container, Row, Col, Button, Form, Stack } from "react-bootstrap";
 import { GoogleLogin } from 'react-google-login';
 
-function LoginModal(props) {
-    //884562966666-909ha1fm9ik1mifp9ujt0npb6k3b1kp3.apps.googleusercontent.com
-    //884562966666-o4ehi0hhqjh7ufdr594cvku9p2vhuqkf
-    const responseGoogle = (response) => {
-        console.log(response);
-    }
+function LoginModal({ show, onHide, responseGoogle }) {
 
+    // const { responseGoogle } = props;
+
+    // let userData = {};
+
+    // const responseGoogle = (response) => {
+    //     console.log(response);
+    //     // console.log(response.profileObj.givenName);
+    //     // console.log(response.profileObj.email);
+    //     // console.log(response.profileObj.imageUrl);
+    //     // console.log(response.profileObj.googleId);
+    //     userData.givenName = response.profileObj.givenName;
+    //     userData.email = response.profileObj.email;
+    //     userData.imageUrl = response.profileObj.imageUrl;
+    //     userData.googleId = response.profileObj.googleId;
+    //     console.log(userData);
+    //     return userData;
+    // }
+
+    // console.log(props);
+    // console.log(userData);
     return (
-        <Modal {...props} aria-labelledby="contained-modal-title-vcenter">
+        <Modal show={show}
+            onHide={onHide} aria-labelledby="contained-modal-title-vcenter">
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
                     Вход на сайт <b className="colored-text">Movie review</b>
@@ -60,7 +76,7 @@ function LoginModal(props) {
                 </Container>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={props.onHide}>Close</Button>
+                <Button variant="secondary" onClick={onHide}>Close</Button>
             </Modal.Footer>
         </Modal >
     );
