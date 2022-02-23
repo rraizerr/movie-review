@@ -1,10 +1,9 @@
 import { Modal, Container, Row, Col, Button, Form, Stack } from "react-bootstrap";
-import GoogleLogin from 'react-google-login';
+import { GoogleLogin } from 'react-google-login';
 
 function LoginModal(props) {
-
     //884562966666-909ha1fm9ik1mifp9ujt0npb6k3b1kp3.apps.googleusercontent.com
-
+    //884562966666-o4ehi0hhqjh7ufdr594cvku9p2vhuqkf
     const responseGoogle = (response) => {
         console.log(response);
     }
@@ -46,7 +45,7 @@ function LoginModal(props) {
                         <Col xs={6} md={4}>
                             {/* <div className="g-signin2" data-onsuccess="onSignIn"></div> */}
                             <GoogleLogin
-                                clientId="884562966666-909ha1fm9ik1mifp9ujt0npb6k3b1kp3.apps.googleusercontent.com"
+                                clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                                 buttonText="Войти"
                                 onSuccess={responseGoogle}
                                 onFailure={responseGoogle}

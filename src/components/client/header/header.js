@@ -6,7 +6,7 @@ import LoginModal from "../loginModal/loginModal";
 
 function Header() {
     const [modalShow, setModalShow] = useState(false);
-    const logged = true;
+    const logged = false;
 
     return (
 
@@ -22,10 +22,10 @@ function Header() {
                         <Nav>
                             {!logged
                                 ? (<Button variant="secondary" onClick={() => setModalShow(true)}>
-                                    Sigh in
+                                    Войти
                                 </Button>)
                                 : (<Navbar.Text>
-                                    Signed in as: <Link to="/users/:name">Mark Otto</Link>
+                                    Вы вошли как: <Link to="/users/:name">Mark Otto</Link>
                                 </Navbar.Text>)
                             }
 
